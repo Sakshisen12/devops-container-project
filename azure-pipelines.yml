@@ -5,13 +5,7 @@ pool:
   name: 'Default'
 
 steps:
-- task: Docker@2
-  displayName: 'Build and Push Image to ACR'
-  inputs:
-    containerRegistryType: 'Azure Container Registry'
-    azureSubscription: 'Azure-Cloud-Connection'
-    azureContainerRegistry: 'sakshicr2026'
-    repository: 'devops-container-project'
-    command: 'buildAndPush'
-    Dockerfile: '**/Dockerfile'
-    tags: 'latest'
+- script: |
+    docker build -t sakshicr2026.azurecr.io/devops-container-project:latest .
+    docker push sakshicr2026.azurecr.io/devops-container-project:latest
+  displayName: 'Build and Push Image'
