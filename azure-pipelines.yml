@@ -2,7 +2,7 @@ trigger:
 - main
 
 pool:
-  vmImage: 'default'
+  name: 'Default'
 
 steps:
 - task: Docker@2
