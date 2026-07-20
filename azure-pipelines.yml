@@ -5,16 +5,7 @@ pool:
   name: 'Default'
 
 steps:
-# Step 1: Build the image locally on your laptop and push to ACR
 - script: |
     docker build -t sakshicr2026.azurecr.io/devops-container-project:latest .
     docker push sakshicr2026.azurecr.io/devops-container-project:latest
   displayName: 'Build and Push Image'
-
-# Step 2: Tell your existing Azure Web App to deploy the new image
-- task: AzureWebAppContainer@1
-  displayName: 'Deploy to Azure Web App'
-  inputs:
-    azureSubscription: 'Azure-Cloud-Connection'
-    appName: 'sakshi-cloud-app'
-    imageName: 'sakshicr2026.azurecr.io/devops-container-project:latest'
